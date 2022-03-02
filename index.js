@@ -15,6 +15,7 @@ let speedBullet = 8;
 let meteor;
 let dropRate = 0;
 let meteorIsHit;
+
 //METEOR
 class flamingMeteor {
   constructor(x, y, width, height) {
@@ -94,9 +95,10 @@ class Bullet {
     meteorIsHit = meteor.meteors.findIndex((obstacle) =>
       collision(obstacle, this)
     );
-    console.log(meteorIsHit);
+    // console.log(meteorIsHit);
     if (meteorIsHit >= 0) {
       meteor.meteors.splice(meteorIsHit, 1);
+      score++;
       return true;
     }
     return false;
@@ -154,7 +156,7 @@ function draw() {
   player.keyPressed();
   laser.draw();
   meteor.draw();
-
+  console.log(score);
   if (laser.isAnyBulletsCollid()) {
     console.log("Target Hit");
   }
