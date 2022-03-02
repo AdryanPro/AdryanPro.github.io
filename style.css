@@ -1,31 +1,42 @@
-:root{
-    --primary:#191714;
-    --secondary:#2234ae;
+:root {
+  --primary: #191714;
+  --secondary: #2234ae;
 }
 body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(130deg, var(--primary), var(--secondary)) no-repeat center center / cover   ;
-    position: static;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(180deg, var(--primary), var(--secondary))
+    no-repeat center center / cover;
+  position: static;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
 
-h1{
-    color: aliceblue;
+h1 {
+  color: aliceblue;
 }
 
-.startGameBtn{
-    font-size: 30px;
-    background-color: white;
-    color: black;
-    padding: 20px 40px;
-    border: 0;
-    box-shadow: 0;
-    border-radius: 5px;
-    display: flex;
-    align-content: flex-end;
+.startGameBtn {
+  font-size: 30px;
+  background-color: white;
+  color: black;
+  padding: 20px 40px;
+  border: 0;
+  box-shadow: 0;
+  border-radius: 5px;
+  display: flex;
+  align-content: flex-end;
+}
+#first-screen {
+  z-index: 10;
+}
+#second-screen {
+  z-index: 8;
+}
+#third-screen {
+  z-index: 7;
 }

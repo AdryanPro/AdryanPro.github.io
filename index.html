@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spacetroide</title>
+    <title>SPACE DEFENDERS</title>
+
     <link rel="stylesheet" href="./style.css">
+    
 
 </head>
 <body>
-    <div class="wrapper">
-        
-        <div class="container">
-            <h1 class="RemoveDuringGame">MY SPACE GAME</h1>
-            <div id="game-board">
-            </div>
-            <button type="button" class="startGameBtn RemoveDuringGame">START PLAYING</button>
-        </div>
+    <div id="first-screen">
+        <h1 class="RemoveDuringGame">SPACE DEFENDERS</h1>
+        <button type="button" class="startGameBtn">START PLAYING</button>
     </div>
 
+    <div id="second-screen">
+        <div id="game-board">
+    </div>
+
+    <div id="third-screen">
+        <H1>GAME OVER</H1>
+        <button class="restart">RESTART</button>
+        <p id="score"></p>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>   
     <script src="./index.js"></script>
 </body>
