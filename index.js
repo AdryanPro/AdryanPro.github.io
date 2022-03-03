@@ -1,16 +1,18 @@
 const firstScreen = document.querySelector("#first-screen");
 const secondScreen = document.querySelector("#second-screen");
 const thirdScreen = document.querySelector("#third-screen");
-const gameOverScore = document.querySelector("#score");
+const gameOverscore = document.querySelector(".score");
+const startBtn = document.querySelector("#startGameBtn");
+const restartBtn = document.querySelector("#restart");
+const finalScore = document.querySelector(".gameScore");
 
-//thirdScreen.style.display = 'none';
 //VARIABLE INITIALIZATION
 let gameIsOver = false;
-let score = 0;
+let currentScore = 0;
 let laser;
 let player;
 let speed = 10;
-let fallingSpeed = 4;
+let fallingSpeed = 5;
 let speedBullet = 8;
 let meteor;
 let dropRate = 0;
@@ -43,6 +45,9 @@ class flamingMeteor {
         element.height
       );
       element.y += fallingSpeed;
+      if (element.y >= 1000) {
+        gameIsOver = true;
+      }
     });
   }
 }
@@ -98,7 +103,7 @@ class Bullet {
     // console.log(meteorIsHit);
     if (meteorIsHit >= 0) {
       meteor.meteors.splice(meteorIsHit, 1);
-      score++;
+      currentScore++;
       return true;
     }
     return false;
@@ -132,13 +137,14 @@ function mouseClicked() {
 }
 
 function preload() {
-  imgFlamingMeteor = loadImage("./images/Meteor.png");
-  imgPlayer = loadImage("./images/Piskel.png");
-  imgBullet = loadImage("./images/Bullet.png");
+  bg = loadImage("./images/spaceBackground.png");
+  imgFlamingMeteor = loadImage("images/Meteor.png");
+  imgPlayer = loadImage("images/Piskel.png");
+  imgBullet = loadImage("images/Bullet.png");
 }
 
 function setup() {
-  const canvas = createCanvas(800, 770);
+  const canvas = createCanvas(800, 1000);
   canvas.parent("game-board");
   player = new spaceShip(300, 350, 100, 85);
   meteor = new flamingMeteor(
@@ -151,15 +157,15 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(bg);
   player.draw();
   player.keyPressed();
   laser.draw();
   meteor.draw();
-  console.log(score);
-  if (laser.isAnyBulletsCollid()) {
-    console.log("Target Hit");
-  }
+
+  console.log(currentScore);
+  gameOverscore.innerText = currentScore;
+  laser.isAnyBulletsCollid();
 
   if (player.checkPlayerToMeteorCollision()) {
     gameIsOver = true;
@@ -167,6 +173,9 @@ function draw() {
   if (gameIsOver) {
     gameOver();
   }
+  // if (currentScore % 10) {
+  //   fallingSpeed++;
+  // }
 }
 
 //COLLISION
@@ -181,10 +190,39 @@ function collision(element1, element2) {
 
 //GAMEOVER
 function gameOver() {
-  console.log("Game is over");
+  // console.log("Game is over");
+  finalScore.innerText = currentScore;
   firstScreen.style.display = "none";
   secondScreen.style.display = "none";
-  thirdScreen.style.display = "block";
-  gameOverScore.innerHTML = `Your score is : ${score}`;
+  thirdScreen.style.display = "flex";
   noLoop(); //stop the draw function
 }
+
+window.addEventListener("load", () => {
+  secondScreen.style.display = "none";
+  thirdScreen.style.display = "none";
+  noLoop();
+
+  startBtn.addEventListener("click", () => {
+    firstScreen.style.display = "none";
+    secondScreen.style.display = "flex";
+    thirdScreen.style.display = "none";
+    // canvas.width = window.innerWidth;
+    // canvas.height = window.innerHeight;
+    loop();
+  });
+
+  restartBtn.addEventListener("click", () => {
+    firstScreen.style.display = "none";
+    secondScreen.style.display = "flex";
+    thirdScreen.style.display = "none";
+    gameIsOver = false;
+    player.x = 300;
+    player.y = 350;
+    meteor.meteors = [];
+    currentScore = 0;
+    fallingSpeed = 5;
+    laser.bullets = [];
+    loop();
+  });
+});

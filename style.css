@@ -3,7 +3,6 @@
   --secondary: #2234ae;
 }
 body {
-  z-index: 10;
   margin: 0;
   padding: 0;
   background: linear-gradient(180deg, var(--primary), var(--secondary))
@@ -12,31 +11,73 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
+}
+
+#first-screen {
+  z-index: 100;
+  background: url(images/GameStartingScreen.png) no-repeat center / cover;
+  width: 100vw;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
 }
-
-h1 {
+#first-screen h1 {
   color: aliceblue;
+  margin-bottom: 0;
+  padding-bottom: 20%;
+  font-size: 9rem;
 }
-
-.startGameBtn {
-  font-size: 30px;
+#first-screen button {
+  font-size: 45px;
   background-color: white;
   color: black;
   padding: 20px 40px;
   border: 0;
   box-shadow: 0;
   border-radius: 5px;
+  margin-bottom: 20%;
+  border-radius: 2rem;
+  opacity: 0.5;
+}
+#first-screen button:hover {
+  border: 0.2rem solid black;
+  opacity: 0.8;
+}
+
+#second-screen div {
+  margin-left: 35vw;
   display: flex;
-  align-content: flex-end;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-#first-screen {
-  z-index: 10;
-}
-#second-screen {
-  z-index: 8;
-}
+
 #third-screen {
-  z-index: 7;
+  background: url("images/GameOverScreen.jpg") no-repeat center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#third-screen button {
+  font-size: 45px;
+  background-color: white;
+  color: black;
+  padding: 20px 40px;
+  border: 0;
+  box-shadow: 0;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  border-radius: 2rem;
+  opacity: 0.5;
+  width: 20vw;
+  margin-bottom: 100%;
+}
+#third-screen button:hover {
+  border: 0.2rem solid black;
+  opacity: 0.8;
 }
