@@ -16,7 +16,7 @@ body {
 
 #first-screen {
   z-index: 100;
-  background: url("images/GameStartingScreen.png") no-repeat center / cover;
+  background: url("images/GameStartingScreen.PNG") no-repeat center / cover;
   width: 100vw;
   display: flex;
   align-items: center;
