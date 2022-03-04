@@ -11,11 +11,12 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
+  font-family: "Londrina Shadow", cursive;
 }
 
 #first-screen {
   z-index: 100;
-  background: url(images/GameStartingScreen.png) no-repeat center / cover;
+  background: url("images/GameStartingScreen.png") no-repeat center / cover;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -39,20 +40,29 @@ body {
   margin-bottom: 20%;
   border-radius: 2rem;
   opacity: 0.5;
+  font-family: "Londrina Shadow", cursive;
 }
 #first-screen button:hover {
   border: 0.2rem solid black;
   opacity: 0.8;
 }
 
-#second-screen div {
-  margin-left: 35vw;
+#second-screen {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
-
+#second-screen h1 {
+  color: red;
+  font-size: 2.5rem;
+  margin-right: 25vw;
+}
+#second-screen h1 span {
+  color: white;
+}
 #third-screen {
   background: url("images/GameOverScreen.jpg") no-repeat center;
   width: 100vw;
@@ -76,8 +86,13 @@ body {
   opacity: 0.5;
   width: 20vw;
   margin-bottom: 100%;
+  font-family: "Londrina Shadow", cursive;
 }
 #third-screen button:hover {
   border: 0.2rem solid black;
   opacity: 0.8;
+}
+#third-screen p {
+  font-size: 4rem;
+  color: white;
 }

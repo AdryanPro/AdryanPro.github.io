@@ -17,6 +17,7 @@ let speedBullet = 8;
 let meteor;
 let dropRate = 0;
 let meteorIsHit;
+let timeScore = 1;
 
 //METEOR
 class flamingMeteor {
@@ -30,7 +31,7 @@ class flamingMeteor {
   draw() {
     dropRate++;
     //console.log(dropRate);
-    if (dropRate % 80 === 0) {
+    if (dropRate % 45 === 0) {
       this.meteors.push(
         new flamingMeteor(random(600), 0, random(100, 150), random(100, 150))
       );
@@ -137,7 +138,7 @@ function mouseClicked() {
 }
 
 function preload() {
-  bg = loadImage("./images/spaceBackground.png");
+  bg = loadImage("images/spaceBackground.png");
   imgFlamingMeteor = loadImage("images/Meteor.png");
   imgPlayer = loadImage("images/Piskel.png");
   imgBullet = loadImage("images/Bullet.png");
@@ -173,9 +174,12 @@ function draw() {
   if (gameIsOver) {
     gameOver();
   }
-  // if (currentScore % 10) {
-  //   fallingSpeed++;
-  // }
+  timeScore++;
+  console.log(timeScore);
+  // increaseSpeed();
+  if (timeScore % 300 == 0) {
+    fallingSpeed++;
+  }
 }
 
 //COLLISION
@@ -196,6 +200,12 @@ function gameOver() {
   secondScreen.style.display = "none";
   thirdScreen.style.display = "flex";
   noLoop(); //stop the draw function
+}
+
+function increaseSpeed() {
+  if (currentScore % 10 == 0 && currentScore != 0) {
+    fallingSpeed++;
+  }
 }
 
 window.addEventListener("load", () => {
